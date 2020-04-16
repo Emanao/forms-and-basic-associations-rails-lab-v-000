@@ -19,6 +19,13 @@ class Song < ActiveRecord::Base
     self.genre.name if !!self.genre
   end
 
+  def notes_attributes=(notes_attributes)
+    notes_attributes.each do |i,note_attributes|
+      self.notes.build(note_attributes)
+    end
+  end
+  
+  #For test spec purposes
   def note_contents= (contents)
     contents.each do |content|
       if(!content.strip.empty?)

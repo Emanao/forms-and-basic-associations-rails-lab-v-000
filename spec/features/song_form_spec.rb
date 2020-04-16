@@ -30,8 +30,9 @@ describe "the song form", :type => :feature do
   it 'creates a song with notes' do
     visit '/songs/new'
     fill_in :song_title, with: 'Little Earthquakes'
-    fill_in :song_notes_1, with: 'great piano'
-    fill_in :song_notes_2, with: 'inaccurate seismology'
+    #@emanao test case for fields_for notes_attributes
+    fill_in :song_notes_attributes_0_content, with: 'great piano'
+    fill_in :song_notes_attributes_1_content, with: 'inaccurate seismology'
     find('input[name="commit"]').click
     expect(Song.last.note_contents).to eq ['great piano', 'inaccurate seismology']
   end
